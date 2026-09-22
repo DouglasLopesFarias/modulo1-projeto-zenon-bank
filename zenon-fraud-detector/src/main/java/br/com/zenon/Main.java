@@ -1,6 +1,7 @@
 package br.com.zenon;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -19,5 +20,25 @@ public class Main {
 
         IO.println(t1);
         IO.println(t2);
+        IO.println("--------------------------------------------");
+
+        var transactionIngestor = new TransacionIngestor();
+        List<Transaction> transactions = transactionIngestor.read("data/PS_20174392719_1491204439457_log.csv");
+        IO.println(transactions.size());
+
+        transactions.stream().limit(10).forEach(IO::println);
+
+        IO.println("--------------------------------------------");
+        List<Transaction> transactionsBadData = transactionIngestor.read("data/paysim_with_bad_data.csv");
+        IO.println(transactionsBadData.size());
+        transactionsBadData.forEach(IO::println);
+
+
+        /*new Transaction(1, TransactionType.PAYMENT, new BigDecimal("9838.64"),
+                null,
+                new TransactionCustomer("M1979787155", new BigDecimal("0.0"), new BigDecimal("0.0")),
+                false, false);*/
+
+
     }
 }
