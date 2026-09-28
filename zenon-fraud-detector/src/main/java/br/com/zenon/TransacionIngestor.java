@@ -27,8 +27,6 @@ public class TransacionIngestor {
             throw  new RuntimeException("Erro ao ler o arquivo: "+ filename, ex);
         }
 
-
-
     }
 
     public List<Transaction> readOld(String filename){
