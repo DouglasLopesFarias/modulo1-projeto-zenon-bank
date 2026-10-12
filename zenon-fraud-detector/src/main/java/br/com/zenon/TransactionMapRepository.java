@@ -23,6 +23,12 @@ public class TransactionMapRepository implements TransactionRepository {
     }
 
     @Override
+    public void save(Transaction transaction) {
+        //== so vai colocar se nao existir antes
+        this.transactionByOriginName.putIfAbsent(transaction.origin().name(), transaction);
+    }
+
+    @Override
     public Optional<Transaction> findByOriginName(String originName) {
         return Optional.ofNullable(transactionByOriginName.get(originName));
     }

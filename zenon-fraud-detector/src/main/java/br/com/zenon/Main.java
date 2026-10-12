@@ -78,8 +78,8 @@ public class Main {
         transactionRepository.findByOriginName(notFoundOriginName)
                 .ifPresentOrElse(IO::println, () -> IO.println("Transação nao encontrada para este cliente: " + notFoundOriginName));
 
-        long startTimeList = System.nanoTime();
         String existingOriginName = "C1231006815";
+        long startTimeList = System.nanoTime();
         transactionRepository.findByOriginName(existingOriginName)
                 .ifPresentOrElse(IO::println, () -> IO.println("Transação nao encontrada para este cliente: " + existingOriginName));
         long endTimeList = System.nanoTime();
