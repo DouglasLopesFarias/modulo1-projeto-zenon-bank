@@ -71,7 +71,7 @@ public class TransacionIngestor {
             if(chunks[2] == null || chunks[2].trim().isEmpty()) throw new IllegalArgumentException("O valor de amount nao pode ser nulo nem vazio");
             BigDecimal amount = new BigDecimal(chunks[2]);
 
-            IO.println(amount);
+            //IO.println(amount);
 
             var origin    = new TransactionCustomer(chunks[3], new BigDecimal(chunks[4]), new BigDecimal(chunks[5]));
             var recipient = new TransactionCustomer(chunks[6], new BigDecimal(chunks[7]), new BigDecimal(chunks[8]));

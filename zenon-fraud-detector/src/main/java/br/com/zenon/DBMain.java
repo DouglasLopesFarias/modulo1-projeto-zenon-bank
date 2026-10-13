@@ -9,7 +9,7 @@ public class DBMain {
         ConnectionFactory.getConnection();
         System.out.println("Conexão com o DB criada! :)");
 
-        TransactionRepository repository = new TransactionSQLRepository();
+        //TransactionRepository repository = new TransactionSQLRepository();
 
 //        repository.findByOriginName("C1000001")
 //                        .ifPresentOrElse(IO::println, () -> IO.println("Transação nao encontrada para: C1000001"));
@@ -32,15 +32,13 @@ public class DBMain {
 
 
 
+        var repository = new TransactionSQLRepository();
         var transactionIngestor = new TransacionIngestor();
-
-
         long startTimeSQL = System.nanoTime();
         List<Transaction> transactions = transactionIngestor.read("data/PS_20174392719_1491204439457_log.csv");
         IO.println(transactions.size());
         IO.println("Iniciando adição das tarnsacoes no DB...");
         transactions.forEach(repository::save);
-
         long endTimeSQL = System.nanoTime();
         IO.println("Tempo de Inserção - SQL (ms): " + (endTimeSQL - startTimeSQL) / 1_000_000.0);
 
